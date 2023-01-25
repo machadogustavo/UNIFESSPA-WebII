@@ -1,4 +1,4 @@
-import app from './src/app.js'
+import app from '../APIrest/src/appMongoAtlas.js'
 
 const port = process.env.PORT || 2000
 

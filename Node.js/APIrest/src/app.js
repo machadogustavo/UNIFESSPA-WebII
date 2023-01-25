@@ -4,13 +4,13 @@ const app = express()
 
 app.use(express.json())
 
-const livros = [
+// const livros = [
 
-    {id: 1, "titulo": "A volta dos que não foram"},
-    {id: 2, "titulo": "Pequeno Príncipe"},
-    { id: 3, "titulo": "Como perder uma copa"}
+//     {id: 1, "titulo": "A volta dos que não foram"},
+//     {id: 2, "titulo": "Pequeno Príncipe"},
+//     { id: 3, "titulo": "Como perder uma copa"}
 
-]
+// ]
 
 app.get('/',(req,res) => {
 
@@ -18,6 +18,7 @@ app.get('/',(req,res) => {
 
 })
 
+//CRUD
 
 //GET NO OBJETO
 app.get('/Livros',(req,res) => {
@@ -26,7 +27,7 @@ app.get('/Livros',(req,res) => {
 
 })
 
-//GET EM UM INDEX
+//GET EM UM INDEX //READ
 app.get('/Livros/:id',(req,res) => {
 
     let index = buscaLivro(req.params.id)
@@ -34,7 +35,7 @@ app.get('/Livros/:id',(req,res) => {
 
 })
 
-//ENVIAR NOVO ARQUIVO JSON
+//ENVIAR NOVO ARQUIVO JSON //CREATE
 app.post('/Livros',(req,res) => {
 
     livros.push(req.body)
@@ -42,7 +43,7 @@ app.post('/Livros',(req,res) => {
 
 })
 
-//ALTERAR TITULO COM BASE NO INDEX
+//ALTERAR TITULO COM BASE NO INDEX //UPDATE
 app.put('/Livros/:id',(req,res) => {
 
     let index = buscaLivro(req.params.id)
@@ -57,7 +58,7 @@ function buscaLivro(id){
     return livros.findIndex(livro => livro.id == id)
 }
 
-//DELETAR ARQUIVO JSON
+//DELETAR ARQUIVO JSON //DELETE
 app.delete('/Livros/:id',(req,res) => {
 
     let {id} = req.params ///PEGANDO ID DA REQUISICAO
@@ -71,10 +72,8 @@ app.delete('/Livros/:id',(req,res) => {
 
 export default app
 
-//CRUD
-//CREATE
-//READ
-//UPDATE
-//DELETE
 
-// MONGO DB ATLAS
+
+
+
+
