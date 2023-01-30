@@ -20,10 +20,19 @@ class livroController {
 
     // READ - LER TODOS OS LIVROS
     static listarLivros = (req,res) => {
-        livros.find((error, livros) => 
-        {
-            res.status(200).json(livros)
-        })
+        livros.find()
+            .populate('autor')
+            .exec((error, livros) => {
+
+                if(!error) {
+                    res.status(400).send({message: "Erro ao listar livros :("})
+                }
+                else{
+                    res.status(200).json(livros)
+                }
+                
+            })
+ 
     }
 
     // READ² - BUSCANDO POR ID

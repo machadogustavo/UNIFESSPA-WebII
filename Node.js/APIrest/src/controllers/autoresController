@@ -74,4 +74,4 @@ class autoresController {
 
 }
 
-export default AutorController
+export default autoresController
