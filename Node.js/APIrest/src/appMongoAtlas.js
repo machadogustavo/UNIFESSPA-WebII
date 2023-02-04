@@ -3,7 +3,6 @@ import express from 'express'
 // Importando módulo de conexão
 import dbConnectMongoAtlas from "./config/dbConnect.js"
 // Importando Schema Livro
-import livros from './models/Livro.js'
 import routes from './routes/index.js'
 
 dbConnectMongoAtlas.on("error",console.log.bind(console,"Erro de conexão"))

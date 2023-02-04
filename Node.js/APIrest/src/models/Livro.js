@@ -4,11 +4,14 @@ const livroSchema = new mongoose.Schema(
 
     {
         id: {type: String},
-        Livro: {type: String, required: true},
-        Autor: {type: mongoose.Schema.Types.ObjectId,ref: 'autores', required: true},
-        Editora: {type: String, required: true},
-        NumeroPaginas: {type: Number}
+        livro: {type: String},
+        autor: {type: mongoose.Schema.Types.ObjectId,ref: 'autor', required: true},
+        editora: {type: mongoose.Schema.Types.ObjectId,ref: 'editora', required: true},
+        numeroPaginas: {type: Number}
         
+    },
+    {
+        versionKey: false
     }
 
 )

@@ -21,50 +21,50 @@ class livroController {
     // READ - LER TODOS OS LIVROS
     static listarLivros = (req,res) => {
         livros.find()
-            .populate('autor')
-            .exec((error, livros) => {
-
-                if(!error) {
-                    res.status(400).send({message: "Erro ao listar livros :("})
-                }
-                else{
-                    res.status(200).json(livros)
-                }
-                
-            })
- 
+        .populate([{path: 'autor', select: 'nome'}, {path: 'editora'}])
+        .exec((error, livros) => {
+            if(error){
+                res.status(400).send({message: `${error.message} - Erro ao buscar livros`})
+            }
+            else {
+                res.status(200).json(livros)
+            }
+            
+        })
     }
 
     // READ² - BUSCANDO POR ID
     static listarLivroId = (req,res) => {
         const id = req.params.id
-        livros.findById(id,(error, livros) => {
-
-            if(error) {
-                res.status(400).send({message:`${erro.message} - Id do livro não foi localizado :(`})
-            }
-
-            else {
-                res.status(200).send(livros)
-            }
-        })
-    }
+        livros.findById(id)
+        .populate([{path: 'autor', select: 'nome'}, {path: 'editora'}])
+        .exec((error, livros) => {
+        if(error){
+            res.status(400).send({message: `${error.message} - Id do livro não localizado`})}
+        else {
+            res.status(200).send(livros)
+        }
+    })
+    }   
 
 
     // UPDATE - ATUALIZAR LIVROS
     static atualizarLivro = (req,res) => {
-        const id = req.params.id
+        let id = req.params.id
         livros.findByIdAndUpdate(id, {$set: req.body},(error) => {
             
-            if(!error){
-                res.status(200).send({message:"Livro atualizado com sucesso!"})
+            if(error){
+                res.status(500).send({message:"Erro ao atualizar livro :("})
             }
 
             else {
-                res.status(500).send({message:"Erro ao atualizar livro :("})
+                res.status(200).send({message:"Livro atualizado com sucesso!"})
+              
             }
         })
     }
+
+
 
     // DELETE - DELETAR LIVRO POR ID
     static excluirLivro = (req,res) => {
@@ -82,5 +82,4 @@ class livroController {
     }
 
 }
-
 export default livroController

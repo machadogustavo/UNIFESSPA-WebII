@@ -42,17 +42,18 @@ class autoresController {
     }
 
 
-    // UPDATE - ATUALIZAR autores
+    // UPDATE - ATUALIZAR AUTORES
     static atualizarAutor = (req,res) => {
-        const id = req.params.id
+        let id = req.params.id
         autores.findByIdAndUpdate(id, {$set: req.body},(error) => {
             
-            if(!error){
-                res.status(200).send({message:"Autor atualizado com sucesso!"})
+            if(error){
+                res.status(500).send({message:"Erro ao atualizar autor :("})
             }
 
             else {
-                res.status(500).send({message:"Erro ao atualizar autor :("})
+                res.status(200).send({message:"Autor atualizado com sucesso!"})
+              
             }
         })
     }
