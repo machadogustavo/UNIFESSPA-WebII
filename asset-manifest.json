@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/UNIFESSPA-WebII/static/css/main.2930fe51.css",
-    "main.js": "/UNIFESSPA-WebII/static/js/main.475de660.js",
+    "main.js": "/UNIFESSPA-WebII/static/js/main.4f5fede3.js",
     "static/media/fundo.png": "/UNIFESSPA-WebII/static/media/fundo.634e6bd472eff6edd80e.png",
     "index.html": "/UNIFESSPA-WebII/index.html",
     "main.2930fe51.css.map": "/UNIFESSPA-WebII/static/css/main.2930fe51.css.map",
-    "main.475de660.js.map": "/UNIFESSPA-WebII/static/js/main.475de660.js.map"
+    "main.4f5fede3.js.map": "/UNIFESSPA-WebII/static/js/main.4f5fede3.js.map"
   },
   "entrypoints": [
     "static/css/main.2930fe51.css",
-    "static/js/main.475de660.js"
+    "static/js/main.4f5fede3.js"
   ]
 }
